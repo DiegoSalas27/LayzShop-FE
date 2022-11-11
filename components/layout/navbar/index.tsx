@@ -1,6 +1,53 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from "react";
+import { ICategory } from "../../../interfaces/categories-interface";
+import DropableModal from "../../common/dropable-modal";
 
 function NavBar() {
+  const [openCategoriesModal, setCategoriesModal] = useState(false);
+  const [categories, setCategories] = useState<ICategory[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await fetch('/api/get_categories');
+      const data = await result.json()
+      setCategories(data);
+    })();
+  }, []);
+
+  const router = useRouter();
+
+  function navigate(slug: string) {
+    router.push(`/products/${slug}`);
+  }
+
+  function displayModal() {
+    if (openCategoriesModal) {
+      return (
+        <DropableModal>
+          <>
+            {categories.map((row: ICategory, index: number) => (
+              <Fragment key={index}>
+                <div
+                  onClick={() => navigate(row.category_slug)}
+                  className="w-full container mx-auto flex flex-wrap items-center mt-0 px-6 py-1"
+                >
+                  <p>{row.name}</p>
+                </div>
+                {/* {index === 0 || index === categoryContent.length - 2 ? (
+                  <hr />
+                ) : null} */}
+              </Fragment>
+            ))}
+          </>
+        </DropableModal>
+      );
+    }
+
+    return null;
+  }
+
   return (
     <nav id="header" className="w-full z-30 top-0 py-1">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
@@ -39,6 +86,18 @@ function NavBar() {
                 >
                   About
                 </Link>
+              </li>
+              <li>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onMouseOver={() => setCategoriesModal(true)}
+                  onMouseLeave={() => setCategoriesModal(false)}
+                >
+                  <div className="inline-block no-underline hover:text-black hover:underline py-2 px-4">
+                    Categories
+                    {displayModal()}
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>

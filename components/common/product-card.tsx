@@ -10,6 +10,7 @@ function ProductCard({
   function calcStars() {
     return [1,2,3,4,5].map((num) => (
       <svg
+          key={num}
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           className={`h-4 w-4 fill-current ${num <= rating! ? 'text-yellow-500' : 'text-gray-400'} `}

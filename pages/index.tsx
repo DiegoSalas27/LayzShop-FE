@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Carousel from "../components/common/carousel";
 import GridCard from "../components/common/grid-card";
 import Layout from "../components/layout/main-layout/main-layout";
