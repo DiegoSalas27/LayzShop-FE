@@ -19,6 +19,7 @@ function GridCard({ products, setUpdatedProducts }: IProps) {
             price={product.price}
             thumbnail_image={product.thumbnail_image}
             description={product.description}
+            rating={product.rating}
           />
         ))}
       </div>

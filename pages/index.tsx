@@ -13,10 +13,6 @@ interface IProps {
 function Home({ products }: IProps) {
   const [updatedProducts, setUpdatedProducts] = useState<IProduct[]>(products)
 
-  useEffect(() => {
-    console.log(updatedProducts)
-  }, [updatedProducts])
-
   return (
     <>
       <Carousel />
