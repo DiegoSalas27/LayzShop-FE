@@ -16,11 +16,8 @@ function GridCard({ products, setUpdatedProducts }: IProps) {
           return (
             <ProductCard
               key={product.name}
-              name={product.name}
-              price={product.price}
-              thumbnail_image={product.thumbnail_image}
-              description={product.description}
-              rating={product.rating}
+              product={product}
+              setUpdatedProducts={setUpdatedProducts}
             />
           )
         })}
