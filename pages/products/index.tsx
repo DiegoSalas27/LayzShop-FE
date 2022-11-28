@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import Carousel from "../../components/common/carousel";
 import GridCard from "../../components/common/grid-card";
 import Layout from "../../components/layout/main-layout/main-layout";
@@ -12,15 +13,34 @@ interface IProps {
 
 function Products({ products }: IProps) {
   const [updatedProducts, setUpdatedProducts] = useState<IProduct[]>(products);
+  const [loadSpinner, setLoadSpinner] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (products) setLoadSpinner(false);
+  }, [products]);
 
   return (
-    <>
+   <>
       <Carousel />
-      {products && (
+      {!loadSpinner && (
         <GridCard
           products={updatedProducts as any}
           setUpdatedProducts={setUpdatedProducts}
+          setLoadSpinner={setLoadSpinner}
         />
+      )}
+      {loadSpinner && (
+        <div style={{ margin: "auto", width: "5%", textAlign: "center" }}>
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            visible={true}
+          />
+        </div>
       )}
     </>
   );

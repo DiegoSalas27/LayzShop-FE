@@ -2,16 +2,19 @@ import { useState } from "react";
 
 interface IProps {
   setUpdatedProducts: any
+  setLoadSpinner: any
 }
 
-function SearchNavBar({ setUpdatedProducts }: IProps) {
+function SearchNavBar({ setUpdatedProducts, setLoadSpinner }: IProps) {
   const [query, setQuery] = useState()
 
   async function search(e: any) {
+    setLoadSpinner(true)
     e.preventDefault();
     const result = await fetch(`/api/get_query_products?search=${query}`);
     const data = await result.json()
     setUpdatedProducts(data)
+    setLoadSpinner(false)
   }
 
   return (

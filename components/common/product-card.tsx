@@ -1,11 +1,14 @@
+import { useRouter } from "next/router";
 import { IProduct } from "../../interfaces";
+import { ICategory } from "../../interfaces/categories-interface";
 
 interface IProps {
   product: IProduct
-  setUpdatedProducts: any
 }
 
-function ProductCard({ product, setUpdatedProducts }: IProps) {
+function ProductCard({ product }: IProps) {
+  const router = useRouter();
+
   function calcStars() {
     return [1,2,3,4,5].map((num) => (
       <svg
@@ -19,15 +22,14 @@ function ProductCard({ product, setUpdatedProducts }: IProps) {
     ))
   }
 
-  async function getSimilarProducts() {
-    const result = await fetch(`/api/get_similar_products?name=${product.name}`)
-    const data = await result.json()
-    console.log(data)
-    setUpdatedProducts(data)
+  async function goDetailPage() {
+    const res = await fetch(`/api/get_category?id=${product.category_id}`);
+    const category = await res.json() as ICategory[];
+    router.push(`/products/${category[0].category_slug}/${product.product_slug}`);
   }
 
   return (
-    <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" onClick={getSimilarProducts} style={{ cursor: 'pointer' }}>
+    <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4" onClick={goDetailPage} style={{ cursor: 'pointer' }}>
       <div
         className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
       >

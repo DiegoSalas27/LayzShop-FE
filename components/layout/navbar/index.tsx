@@ -10,8 +10,8 @@ function NavBar() {
 
   useEffect(() => {
     (async () => {
-      const result = await fetch('/api/get_categories');
-      const data = await result.json()
+      const result = await fetch("/api/get_categories");
+      const data = await result.json();
       setCategories(data);
     })();
   }, []);
@@ -27,19 +27,21 @@ function NavBar() {
       return (
         <DropableModal>
           <>
-            {categories.map((row: ICategory, index: number) => (
-              <Fragment key={index}>
-                <div
-                  onClick={() => navigate(row.category_slug)}
-                  className="w-full container mx-auto flex flex-wrap items-center mt-0 px-6 py-1"
-                >
-                  <p>{row.name}</p>
-                </div>
-                {/* {index === 0 || index === categoryContent.length - 2 ? (
+            {categories.map((row: ICategory, index: number) => {
+              return (
+                <Fragment key={index}>
+                  <div
+                    onClick={() => navigate(row.category_slug)}
+                    className="w-full container mx-auto flex flex-wrap items-center mt-0 px-6 py-1"
+                  >
+                    <p>{row.name}</p>
+                  </div>
+                  {/* {index === 0 || index === categoryContent.length - 2 ? (
                   <hr />
                 ) : null} */}
-              </Fragment>
-            ))}
+                </Fragment>
+              );
+            })}
           </>
         </DropableModal>
       );
