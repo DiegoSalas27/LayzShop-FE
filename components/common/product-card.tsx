@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: product-card.tsx
+  SPECIFICATION: 
+    - We need to display a product information in an appealing way
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { useRouter } from "next/router";
 import { IProduct } from "../../interfaces";
 import { ICategory } from "../../interfaces/categories-interface";
@@ -6,9 +14,18 @@ interface IProps {
   product: IProduct
 }
 
+/*
+  NAME: ProductCard
+  PARAMETERS: product
+  PURPOSE: Displays the product information in a card
+  PRECONDITION: None
+  POSTCONDITION: A ProductCard is returned
+*/
+
 function ProductCard({ product }: IProps) {
   const router = useRouter();
 
+  // Calculate number of stars to assign to a product
   function calcStars() {
     return [1,2,3,4,5].map((num) => (
       <svg
@@ -22,6 +39,7 @@ function ProductCard({ product }: IProps) {
     ))
   }
 
+  // Go the a product detail page programatically
   async function goDetailPage() {
     const res = await fetch(`/api/get_category?id=${product.category_id}`);
     const category = await res.json() as ICategory[];

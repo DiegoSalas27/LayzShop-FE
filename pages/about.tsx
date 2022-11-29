@@ -1,7 +1,23 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: about.tsx
+  SPECIFICATION: 
+    - Displays the about page
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { FC } from "react";
 import Banner from "../components/layout/banner";
 import Layout from "../components/layout/main-layout/main-layout";
 import PageWithLayoutType from "../components/layout/types/page-with-layout-type";
+
+/*
+  NAME: About
+  PARAMETERS: None
+  PURPOSE: dummy page
+  PRECONDITION: None
+  POSTCONDITION: Renders a page
+*/
 
 function About() {
   return (

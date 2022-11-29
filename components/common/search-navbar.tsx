@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: search-navbar.tsx
+  SPECIFICATION: 
+    - The user needs to enter a query
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { useState } from "react";
 
 interface IProps {
@@ -5,9 +13,19 @@ interface IProps {
   setLoadSpinner: any
 }
 
+/*
+  NAME: SearchNavBar
+  PARAMETERS: setUpdatedProducts, setLoadSpinner
+  PURPOSE: Receive a user query an redirect it to the node api
+  PRECONDITION: None
+  POSTCONDITION: An input is received and is redirected to the node api
+*/
+
 function SearchNavBar({ setUpdatedProducts, setLoadSpinner }: IProps) {
+  // here we set the state and define state variables
   const [query, setQuery] = useState()
 
+  // we send the query from the user to the node api
   async function search(e: any) {
     setLoadSpinner(true)
     e.preventDefault();

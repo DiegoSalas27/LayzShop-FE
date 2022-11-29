@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: index.tsx
+  SPECIFICATION: 
+    - Displays a list of products
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { FC, useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import Carousel from "../../components/common/carousel";
@@ -11,10 +19,20 @@ interface IProps {
   products: IProduct[];
 }
 
+/*
+  NAME: Products
+  PARAMETERS: None
+  PURPOSE: Functional component that renders products
+  PRECONDITION: None
+  POSTCONDITION: A page is returned
+*/
+
 function Products({ products }: IProps) {
+  // here we set the state and define state variables
   const [updatedProducts, setUpdatedProducts] = useState<IProduct[]>(products);
   const [loadSpinner, setLoadSpinner] = useState<boolean>(true);
 
+  // hid the spinner when the products are loaded
   useEffect(() => {
     if (products) setLoadSpinner(false);
   }, [products]);
@@ -45,6 +63,8 @@ function Products({ products }: IProps) {
     </>
   );
 }
+
+// server side renders the data
 
 export async function getServerSideProps() {
   // can also be used to make sure your page always updates the data, not necessarily the req or res

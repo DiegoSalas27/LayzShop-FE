@@ -1,3 +1,20 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: index.tsx
+  SPECIFICATION: 
+    - Displays a footer with dummy content
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
+/*
+  NAME: Footer
+  PARAMETERS: None
+  PURPOSE: display a footer with dummy content
+  PRECONDITION: None
+  POSTCONDITION: A Footer is retrieved
+*/
+
+
 function Footer() {
   return (
     <footer className="container mx-auto bg-white py-8 border-t border-gray-400">

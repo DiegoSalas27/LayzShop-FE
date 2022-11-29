@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: [productslug].tsx
+  SPECIFICATION: 
+    - Display product comparison
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { ThreeDots } from 'react-loader-spinner'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
@@ -5,12 +13,23 @@ import Layout from '../../../components/layout/main-layout/main-layout';
 import PageWithLayoutType from '../../../components/layout/types/page-with-layout-type';
 import { IProduct } from "../../../interfaces";
 
+/*
+  NAME: Product
+  PARAMETERS: None
+  PURPOSE: Functional component that renders the product detail page
+  PRECONDITION: None
+  POSTCONDITION: A page is returned
+*/
+
 function Product() {
+  // here we set the state and define state variables
   const [walmartProduct, setWalmartProduct] = useState<IProduct>()
   const [targetProduct, setTargetProduct] = useState<IProduct>()
 
+  // we get access to the router object
   const router = useRouter()
 
+  // initializes the state for both walmart and target products
   useEffect(() => {
     (async () => {
       if (router.query.productslug) {
@@ -26,6 +45,7 @@ function Product() {
     })();
   }, [router.query.productslug]);
 
+  // calculates the number of stars of each product
   function calcStars(product: IProduct) {
     return [1,2,3,4,5].map((num) => (
       <svg

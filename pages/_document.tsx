@@ -1,4 +1,20 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: _document.tsx
+  SPECIFICATION: 
+    - Configures the header files of the retrieved html
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { Html, Head, Main, NextScript } from 'next/document'
+
+/*
+  NAME: Document
+  PARAMETERS: None
+  PURPOSE: add global styles to the web application
+  PRECONDITION: None
+  POSTCONDITION: Styles are applied
+*/
 
 function Document() {
   return (

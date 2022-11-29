@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: grid-card.tsx
+  SPECIFICATION: 
+    - We need to display products in a grid
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { IProduct } from "../../interfaces";
 import ProductCard from "./product-card";
 import SearchNavBar from "./search-navbar";
@@ -7,6 +15,14 @@ interface IProps {
   setUpdatedProducts: any
   setLoadSpinner: any
 }
+
+/*
+  NAME: GridCard
+  PARAMETERS: products, setUpdatedProducts, setLoadSpinner
+  PURPOSE: Displays a the products in a grid with a Search navbar as a header
+  PRECONDITION: None
+  POSTCONDITION: A Grid of products is returned
+*/
 
 function GridCard({ products, setUpdatedProducts, setLoadSpinner }: IProps) {
   return (

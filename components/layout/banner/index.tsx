@@ -1,3 +1,19 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: index.tsx
+  SPECIFICATION: 
+    - Displays a banner with informative content
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
+/*
+  NAME: Banner
+  PARAMETERS: title
+  PURPOSE: Display a banner with informative content
+  PRECONDITION: None
+  POSTCONDITION: A Banner is retrieved
+*/
+
 function Banner({ title }: any) {
   return (
     <div

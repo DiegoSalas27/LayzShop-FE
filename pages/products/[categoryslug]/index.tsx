@@ -1,3 +1,11 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: index.tsx
+  SPECIFICATION: 
+    - Display products by category
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import { FC, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import { ThreeDots } from "react-loader-spinner";
@@ -7,12 +15,23 @@ import Layout from "../../../components/layout/main-layout/main-layout";
 import PageWithLayoutType from "../../../components/layout/types/page-with-layout-type";
 import { IProduct } from "../../../interfaces";
 
+/*
+  NAME: CategoryProducts
+  PARAMETERS: None
+  PURPOSE: Functional component that renders products by category page
+  PRECONDITION: None
+  POSTCONDITION: A page is returned
+*/
+
 function CategoryProducts() {
+  // here we set the state and define state variables
   const [updatedProducts, setUpdatedProducts] = useState<IProduct[]>([]);
   const [loadSpinner, setLoadSpinner] = useState<boolean>(true);
 
+  // we get access to the router object
   const router = useRouter()
 
+  // gets the products based on a category
   useEffect(() => {
     (async () => {
       if (router.query.categoryslug) {
@@ -23,6 +42,7 @@ function CategoryProducts() {
     })();
   }, [router.query.categoryslug])
 
+  // updates the spinner when products are loaded
   useEffect(() => {
     if (updatedProducts.length > 0) setLoadSpinner(false);
   }, [updatedProducts]);

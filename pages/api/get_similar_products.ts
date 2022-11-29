@@ -1,5 +1,22 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: get_similar_products.ts
+  SPECIFICATION: 
+    - We need to retrieve a product from target that matches as close as possible the selected product from the user
+    - Use the IR system and query for the products based on the name of the product selected
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import excuteQuery from "../../lib/db";
 import { HTTPResponse } from "../../interfaces/http";
+
+/*
+  NAME: anonymous function
+  PARAMETERS: request, res
+  PURPOSE: Retrieve a product from target that matches the selected product
+  PRECONDITION: A product was clicked
+  POSTCONDITION: A product from target is returned
+*/
 
 export default async (request: any, res: any): Promise<any> => {
   try {
@@ -8,7 +25,7 @@ export default async (request: any, res: any): Promise<any> => {
 
     data = data.map(docID => docID + 667)
 
-    const result = await excuteQuery(`SELECT * FROM heroku_2eb9131ede637f2.products 
+    const result = await excuteQuery(`SELECT * FROM products 
       WHERE product_id IN(${data.join(',')})
       ORDER BY FIELD(product_id, ${data.join(',')})`);
 

@@ -1,13 +1,31 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: index.tsx
+  SPECIFICATION: 
+    - We need to add a navbar for the user to navigate through the web application
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 import { ICategory } from "../../../interfaces/categories-interface";
 import DropableModal from "../../common/dropable-modal";
 
+/*
+  NAME: NavBar
+  PARAMETERS: None
+  PURPOSE: Display a navbar with options to allow easy navigation
+  PRECONDITION: None
+  POSTCONDITION: A NavBar is returned
+*/
+
 function NavBar() {
+  // here we set the state and define state variables
   const [openCategoriesModal, setCategoriesModal] = useState(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
 
+  // get the categories to display
   useEffect(() => {
     (async () => {
       const result = await fetch("/api/get_categories");
@@ -18,10 +36,12 @@ function NavBar() {
 
   const router = useRouter();
 
+  // navigates to a specific category
   function navigate(slug: string) {
     router.push(`/products/${slug}`);
   }
 
+  // displays the categories modal
   function displayModal() {
     if (openCategoriesModal) {
       return (

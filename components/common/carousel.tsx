@@ -1,3 +1,19 @@
+/*
+  AUTHOR: Diego Salas Noain
+  FILENAME: carousel.tsx
+  SPECIFICATION: 
+    - Display a carousel at part of the header
+  FOR: CS 5364 Information Retrieval Section 001 
+*/
+
+/*
+  NAME: Carousel
+  PARAMETERS: checked
+  PURPOSE: Display a carousel with business adds
+  PRECONDITION: None
+  POSTCONDITION: A Carousel is returned
+*/
+
 function Carousel({ checked }: any) {
   return (
     <div className="carousel relative container mx-auto" style={{ maxWidth: 1600 }}>
