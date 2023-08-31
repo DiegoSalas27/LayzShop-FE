@@ -1,11 +1,11 @@
 # LazyShop-FE
 This is the Front End application for Lazy Shop. This system was built using NextJS a production framework for react. It
-Shows a graphical interface to the user displaying products from different stores and consumes the services of LazyShop IR system api. Because the code runs in a server, it leverages NodeJS runtime environment and has a built in module to support backend functionalities which are used to retrieve the document ids map them with the database, and finally retrive the complete information of each product.
+shows a graphical interface to the user displaying products from different stores and consumes the services of LazyShop IR system API. Because the code runs in a server, it leverages NodeJS runtime environment and has a built in module to support backend functionalities which are used to retrieve the document ids map them with the database, and finally retrive the complete information of each product.
 
-## before installation:
+## Before installation:
 NodeJS runtime environment should be downloaded and installed. 
 
-## install dependencies:
+## Install dependencies:
 ```
 npm install --save
 ```
@@ -38,7 +38,7 @@ npm run dev
   - contains files to provide typings for the code
 - components:
   - contains reusable and common components like grid cards, cards, carousel, footer, header, etc.
-  - 
+
 ## Database
 Run the sql files in this repository to create the schema and the tables needed to run the project.
 
